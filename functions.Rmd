@@ -109,9 +109,11 @@ standardize.me(a)
 B. Assign all the numeric columns of the original WCGS dataset to a new dataset called WCGS.new.
 
 ```{r}
+library(purrr)
+
 num_cols <- which(map_lgl(wcgs, is.numeric))
 wcgs.new <- wcgs[num_cols]
-wcgs.new
+
 ```
 
 C. Using a loop and your new function, standardize all the variables WCGS.new dataset.
@@ -121,7 +123,6 @@ C. Using a loop and your new function, standardize all the variables WCGS.new da
 for(i in seq_along(wcgs.new)) {
     wcgs.new[[i]] <- standardize.me(wcgs.new[[i]])
 }
-wcgs.new
 ```
 
 D. What should the mean and standard deviation of all your new standardized variables be? Test your prediction by running a loop
